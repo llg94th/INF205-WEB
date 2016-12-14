@@ -5,6 +5,8 @@
 	$sql = "SELECT * FROM product";
 	$result = $conn->query($sql);
 	$respon = array();
+	
+	//Get list products
 	if($result->num_rows>0){
 		$mang = array();
 		while($row = $result->fetch_assoc()){
