@@ -95,7 +95,7 @@ function loadProduct(product,i){
 }
 
 function showDialogDelete(id){
-	$('#dlDelContent').append('Xoá sản phẩm: '+id+'?');
+	$('#dlDelContent').html('Xoá sản phẩm: '+id+'?');
 	console.log('Xoá sản phẩm: '+id+'?');
 	$('#myModal').modal();
 	$('#btnDelProduct').click(function(e) {
