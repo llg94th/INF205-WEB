@@ -3,6 +3,8 @@
 	$db = new DB_Connect();
 	$conn = $db->connect();
 	$respon = array();
+	
+	//Edit products
 	if(isset($_REQUEST['id'])&&isset($_REQUEST['name'])&&isset($_REQUEST['price'])){
 		$sql = "UPDATE `product` SET `product_name`='".$_REQUEST['name']."',`price`=".$_REQUEST['price']." WHERE `id`='".$_REQUEST['id']."'";
 		if($conn->query($sql)){

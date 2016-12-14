@@ -1,4 +1,5 @@
 var numOfAll=0,numOfToday=0,numOfThisM=0,numOfThisW=0,numOfThisY=0;
+// lay danh sach hoa don
 function loadListInvoice(result){
 	result.forEach(loadInvoice);
 	$('#all-invoice').html(numOfAll);
@@ -29,6 +30,7 @@ function loadInvoice(invoice,i){
 		numOfToday++;
 	}
 }
+//them moi 1 hoa don
 function addInvoiceToList(invoice,taget){
 	var itemString ='';
 	invoice.items.forEach(function(itemp,i){
@@ -44,6 +46,7 @@ function addInvoiceToList(invoice,taget){
 		'</a>';
 	taget.append(html);
 }
+//tim kiem
 function msearch(){
 	$('#search-result').empty();
 	var firstChild = '<li class="list-group-item active">'+
@@ -66,7 +69,7 @@ function msearch(){
 		});
 	}
 }
-
+// lay danh sach san pham
 function loadListProducts(){
 	$.getJSON('get-list-product.php',function(data,e){
 		console.log(data.result);
