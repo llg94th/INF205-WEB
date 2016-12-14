@@ -88,7 +88,7 @@ function loadProduct(product,i){
             +'<button onClick="showDialogEdit(\''+product.id+'\',\''+product.product_name+'\',\''+product.price+'\',\''+product.category_id+'\')" type="button" data-toggle="modal" data-target="#modalEdit" class="btn  btn-sm btn-success"><span class="glyphicon glyphicon-edit"></span>&nbsp; Sửa</button>'
             +'</span>'
             +'<h4 class="list-group-item-heading">'+product.id+' - '+product.product_name+'</h4>'
-            +'<h5 class="list-group-item-text">Giá: '+product.price+' VNĐ</h5>'
+            +'<h5 class="list-group-item-text">Phân loại: '+product.category_name+' - Giá: '+product.price+' VNĐ</h5>'
          +'</li>';
 		 
 	$('#list-product-l').append(content);
