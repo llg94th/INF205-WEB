@@ -13,14 +13,6 @@ function loadInvoice(invoice,i){
 	numOfAll++;
 	var currentDate = new Date();
 	var date = new Date(parseFloat(invoice.date));
-	if(date.getFullYear()==currentDate.getFullYear()){
-		addInvoiceToList(invoice,$('#list-invoice-y'));
-		numOfThisY++;
-	}
-	if(date.getFullYear()==currentDate.getFullYear()&&date.getMonth()==currentDate.getMonth()){
-		addInvoiceToList(invoice,$('#list-invoice-m'));
-		numOfThisM++;
-	}
 	if(date.getFullYear()==currentDate.getFullYear()&&date.getMonth()==currentDate.getMonth()&&date.getDay()>=1&&Math.abs(date.getDate()-currentDate.getDate())<7){
 		addInvoiceToList(invoice,$('#list-invoice-w'));
 		numOfThisW++;
@@ -67,6 +59,12 @@ function msearch(){
 				addInvoiceToList(iv,$('#search-result'));
 			}
 		});
+	}else if (option==3){
+		objs.result.forEach(function(iv,i){
+			if(iv.customer.phonenumber.search(query)>=0){
+				addInvoiceToList(iv,$('#search-result'));
+			}
+		});
 	}
 }
 // lay danh sach san pham
@@ -82,6 +80,8 @@ function loadListProducts(){
 		}
 	});
 }
+
+//Đổ Sản phẩm ra List
 function loadProduct(product,i){
 	var content = '<li class="list-group-item"> <span style="background:#FFF" class="badge">'
             +'<button onClick="showDialogDelete(\''+product.id+'\')" type="button" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span>&nbsp; Xoá</button>'
@@ -146,6 +146,7 @@ function saveProduct(){
 			if(data.success==1){
 				modalAleart('Thêm thành công sản phẩm: '+name);
 				loadListProducts();
+				clearForm();
 			}else{
 				modalAleart('Có lỗi xảy ra! </br>'+e);
 				console.log(data);
@@ -154,6 +155,7 @@ function saveProduct(){
 	}
 }
 function clearForm(){
+	$('#product-price-category-name').val('');
 	$('#product-name-a').val('');
 	$('#product-price-a').val('');
 	$('#product-category-a').val(1);
@@ -168,13 +170,32 @@ function loadListProductCategory(){
 	$.getJSON('get-list-product-category.php',function(data,e){
 		$('#product-category-a').empty();
 		$('#product-category').empty();
+		$('#search-product-category-result').empty();
 		if(data.success==1){
 			var list = data.result;
 			for (i=0 ; i<list.length ; i++){
 				var html = '<option value="'+list[i].id+'">'+list[i].name+'</option>';
 				$('#product-category-a').append(html);
 				$('#product-category').append(html);
+				var html2 = '<li class="list-group-item">'
+							+'<span class="badge">'+list[i].number+'</span>'
+							+'<h4 class="list-group-item-heading" ><strong>'+list[i].name+'</strong></h4>'
+							+'<h5 class="list-group-item-text" >Mã: '+list[i].id+'</h5>'
+							+'</li>';
+				$('#search-product-category-result').append(html2);
 			}
+		}
+	});
+}
+function saveProductCategory(){
+	var category = $('#product-price-category-name').val();
+	$.getJSON('add-product-category.php?name='+category,function(data,e){
+		if(data.success==1){
+			modalAleart('Thêm loại sản phẩm thành công');
+			loadListProductCategory();
+			clearForm();
+		}else{
+			modalAleart('Có lỗi xảy ra! \n'+e);
 		}
 	});
 }

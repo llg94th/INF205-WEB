@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Quản lý hoá đơn bán hàng</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="css/mainindex.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -71,18 +72,15 @@
         <h4 class="modal-title">Sửa sản phẩm</h4>
       </div>
       <div class="modal-body">
-        <div class="input-group">
-          <span class="input-group-addon">Tên sản phẩm</span>
+        <div class="input-group"> <span class="input-group-addon">Tên sản phẩm</span>
           <input id="product-name" type="text" class="form-control input-lg" placeholder="Tên sản phẩm">
         </div>
-        <div class="input-group" style="margin-top:10px">
-          <span class="input-group-addon">Giá sản phẩm</span>
+        <div class="input-group" style="margin-top:10px"> <span class="input-group-addon">Giá sản phẩm</span>
           <input id="product-price" type="number" class="form-control input-lg" placeholder="Giá sản phẩm">
           <span class="input-group-addon">Mã sản phẩm</span>
           <input id="product-id" type="number" class="form-control input-lg" placeholder="SP0001" disabled >
         </div>
-        <div class="input-group" style="margin-top:10px">
-          <span class="input-group-addon">Loại sản phẩm</span>
+        <div class="input-group" style="margin-top:10px"> <span class="input-group-addon">Loại sản phẩm</span>
           <select id="product-category" class="form-control input-lg">
             <option value="0">Chưa phân loại</option>
             <option value="1">Apple</option>
@@ -110,14 +108,13 @@
       <ul class="list-group">
         <li  class="list-group-item" style="text-decoration:none;font-size:16px;color:#000;font-weight:bold;background:#FF0">Quản lý hoá đơn</li>
         <li class="list-group-item active"><a style="text-decoration:none;font-size:16px;color:#000;font-weight:" data-toggle="tab" href="#list-invoice-a" >Tất cả hoá đơn</a><span id="all-invoice" class="badge">100</span></li>
-        <li class="list-group-item"><a style="text-decoration:none;font-size:16px;color:#000;font-weight:" data-toggle="tab" href="#list-invoice-y">Năm này</a><span id="thisY" class="badge">10</span></li>
         <li class="list-group-item"><a style="text-decoration:none;font-size:16px;color:#000;font-weight:" data-toggle="tab" href="#list-invoice-m">Tháng này</a><span id="thisM" class="badge">10</span></li>
-        <li class="list-group-item"><a style="text-decoration:none;font-size:16px;color:#000;font-weight:" data-toggle="tab" href="#list-invoice-w">Tuần này</a><span id="thisW" class="badge">10</span></li>
         <li class="list-group-item"><a style="text-decoration:none;font-size:16px;color:#000;font-weight:" data-toggle="tab" href="#list-invoice-d">Hôm nay</a><span id="thisD" class="badge">10</span></li>
         <li class="list-group-item"><a style="text-decoration:none;font-size:16px;color:#000;font-weight:" data-toggle="tab" href="#list-invoice-s">Tìm kiếm</a></li>
         <li  class="list-group-item" style="text-decoration:none;font-size:16px;color:#000;font-weight:bold;background:#FF0">Quản lý sản phẩm</li>
         <li class="list-group-item"><a href="#list-product-l" style="text-decoration:none;font-size:16px;color:#000;font-weight:" data-toggle="tab">Danh sách Sản phẩm</a></li>
         <li class="list-group-item"><a href="#list-product-a" style="text-decoration:none;font-size:16px;color:#000;font-weight:" data-toggle="tab">Thêm sản phẩm</a></li>
+        <li class="list-group-item"><a href="#list-product-category" style="text-decoration:none;font-size:16px;color:#000;font-weight:" data-toggle="tab">Danh sách loại SP</a></li>
       </ul>
     </div>
     <div class="col-sm-9" style="overflow:scroll;height:84vh">
@@ -125,16 +122,6 @@
         <div id="list-invoice-a" class="list-group tab-pane flash in active" style="margin-top:10px;">
           <li class="list-group-item active">
             <h4 class="list-group-item-heading">Hoá đơn bán hàng - Tất cả</h4>
-          </li>
-        </div>
-        <div id="list-invoice-y" class="list-group tab-pane flash" style="margin-top:10px;">
-          <li class="list-group-item active">
-            <h4 class="list-group-item-heading">Hoá đơn bán hàng - Năm này</h4>
-          </li>
-        </div>
-        <div id="list-invoice-m" class="list-group tab-pane flash" style="margin-top:10px;">
-          <li class="list-group-item active">
-            <h4 class="list-group-item-heading">Hoá đơn bán hàng - Tháng này</h4>
           </li>
         </div>
         <div id="list-invoice-w" class="list-group tab-pane flash" style="margin-top:10px;">
@@ -147,7 +134,6 @@
             <h4 class="list-group-item-heading">Hoá đơn bán hàng - Hôm nay</h4>
           </li>
         </div>
-        
         <div id="list-invoice-s" class="tab-pane flash" style="margin-top:10px;">
           <div class="form-group" style="margin-bottom:50px">
             <div class="container">
@@ -155,6 +141,7 @@
                 <select class="form-control input-lg" id="searchOption" name="searchOption">
                   <option value="1">Mã khách hàng</option>
                   <option value="2">Mã hoá đơn</option>
+                  <option value="3">Số điện thoại KH</option>
                 </select>
               </div>
               <div class="col-xs-4">
@@ -171,7 +158,6 @@
             </li>
           </div>
         </div>
-        
         <div id="list-product-l" class="list-group tab-pane flash" style="margin-top:10px;">
           <li class="list-group-item"> <span style="background:#FFF" class="badge">
             <button onClick="showDialogDelete('SP0001')" type="button" data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span>&nbsp; Xoá</button>
@@ -182,28 +168,41 @@
           </li>
         </div>
         <div id="list-product-a" class="list-group tab-pane flash" style="margin-top:10px;">
-        	<div class="input-group">
-              <span class="input-group-addon">Tên sản phẩm</span>
-              <input id="product-name-a" type="text" class="form-control input-lg" placeholder="Tên sản phẩm" required>
-            </div>
-            <div class="input-group" style="margin-top:10px">
-              <span class="input-group-addon">Giá sản phẩm</span>
-              <input id="product-price-a" type="number" class="form-control input-lg" placeholder="Giá sản phẩm" required>
-              <span class="input-group-addon">Mã sản phẩm</span>
-              <input id="product-id" type="text" class="form-control input-lg" placeholder="Tự động" disabled>
-            </div>
-            <div class="input-group" style="margin-top:10px">
-              <span class="input-group-addon">Loại sản phẩm</span>
-              <select id="product-category-a" class="form-control input-lg">
-              	<option value="0">Chưa phân loại</option>
-                <option value="1">Apple</option>
-                <option value="2">Samsung</option>
-              </select>
-            </div>
-            <div align="center" style="margin-top:10px">
-            	<button onClick="clearForm()" type="reset" class="btn btn-info"><span class="glyphicon glyphicon-remove-sign"></span>&nbsp; Nhập lại</button>
-                <button onClick="saveProduct()" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span>&nbsp; Lưu lại</button>
-            </div>
+          <div class="input-group"> <span class="input-group-addon">Tên sản phẩm</span>
+            <input id="product-name-a" type="text" class="form-control input-lg" placeholder="Tên sản phẩm" required>
+          </div>
+          <div class="input-group" style="margin-top:10px"> <span class="input-group-addon">Giá sản phẩm</span>
+            <input id="product-price-a" type="number" class="form-control input-lg" placeholder="Giá sản phẩm" required>
+            <span class="input-group-addon">Mã sản phẩm</span>
+            <input id="product-id" type="text" class="form-control input-lg" placeholder="Tự động" disabled>
+          </div>
+          <div class="input-group" style="margin-top:10px"> <span class="input-group-addon">Loại sản phẩm</span>
+            <select id="product-category-a" class="form-control input-lg">
+            </select>
+          </div>
+          <div align="center" style="margin-top:10px">
+            <button onClick="clearForm()" type="reset" class="btn btn-info"><span class="glyphicon glyphicon-remove-sign"></span>&nbsp; Nhập lại</button>
+            <button onClick="saveProduct()" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span>&nbsp; Lưu lại</button>
+          </div>
+        </div>
+        <div id="list-product-category" class="tab-pane flash" style="margin-top:10px;">
+          <div class="input-group" style="margin-top:10px"> <span class="input-group-addon">Loại SP</span>
+            <input id="product-price-category-name" type="text" class="form-control input-lg" placeholder="Nhập loại SP" required>
+            <span class="input-group-addon">Mã</span>
+            <input type="text" class="form-control input-lg" placeholder="Tự động" disabled>
+          </div>
+          <div align="center" style="margin-top:10px">
+            <button onClick="clearForm()" class="btn btn-info"><span class="glyphicon glyphicon-remove-sign"></span>&nbsp; Nhập lại</button>
+            <button onClick="saveProductCategory()" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span>&nbsp; Thêm mới</button>
+          </div>
+          <div id="search-product-category-result" class="list-group"  style="margin-top:20px;">
+            
+            <li class="list-group-item">
+            	<span class="badge">10</span>
+            	<h4 class="list-group-item-heading" >Apple</h4>
+                <h5 class="list-group-item-text" >Mã: </h5>
+            </li>
+          </div>
         </div>
       </div>
     </div>

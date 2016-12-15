@@ -8,7 +8,12 @@
 	if($result->num_rows>0){
 		$mang = array();
 		while($row = $result->fetch_assoc()){
-			array_push($mang,$row);
+			$category = $row;
+			$sql2 = 'SELECT COUNT(category_id) AS number FROM product WHERE category_id='.$row['id'];
+			$result2 = $conn->query($sql2);
+			$cusor = $result2->fetch_assoc();
+			$category['number'] = $cusor['number'];
+			array_push($mang,$category);
 		}
 		$respon['success']=1;
 		$respon['result']=$mang;

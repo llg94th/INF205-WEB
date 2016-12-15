@@ -18,7 +18,12 @@
 					array_push($listItem,$item);
 				}
 			}
+			$sql3 = "SELECT * FROM customers WHERE id LIKE '".$invoice['customers_id']."'";
+			$customerCusor = $conn->query($sql3);
+			$customer = $customerCusor->fetch_assoc();
+			
 			$invoice['items'] = $listItem;
+			$invoice['customer'] = $customer;
 			array_push($listInvoice,$invoice);
 		}
 		$respon['success']=1;
