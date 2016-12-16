@@ -62,11 +62,13 @@
 		$('#customerAdd').html(invoiceObj.result.customer.address);
 		$('#employee').html(invoiceObj.result.name);
 		invoiceObj.result.items.forEach(loadItems);
-		var htmlLastItem = '<div class="item"><span class="stt">&nbsp;</span><span class="product">&nbsp;</span><span class="number">&nbsp;</span><span class="price">Tổng:</span><span class="total">'+totalPrice+'</span></div>';
+		var htmlLastItem = '<div class="item"><span class="stt">&nbsp;</span><span class="product">&nbsp;</span><span class="number">&nbsp;</span><span class="price">Tổng:</span><span class="total">'+totalPrice.toLocaleString()+'</span></div>';
 		$('#items').append(htmlLastItem);
 	}
+	
+	
 	function loadItems(product, i){
-		var htmlItem = '<div class="item"><span class="stt">'+(i+1)+'</span><span class="product">'+product.product_id+' - '+product.product_name+'</span><span class="number">'+product.number+'</span><span class="price">'+product.price+'</span><span class="total">'+(product.number*product.price)+'</span></div>';
+		var htmlItem = '<div class="item"><span class="stt">'+(i+1)+'</span><span class="product">'+product.product_id+' - '+product.product_name+'</span><span class="number">'+product.number+'</span><span class="price">'+parseInt(product.price).toLocaleString()+'</span><span class="total">'+(product.number*product.price).toLocaleString()+'</span></div>';
 		totalPrice = totalPrice + product.number*product.price;
 		$('#items').append(htmlItem);
 	}

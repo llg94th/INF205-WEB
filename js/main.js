@@ -1,11 +1,9 @@
-var numOfAll=0,numOfToday=0,numOfThisM=0,numOfThisW=0,numOfThisY=0;
+var numOfAll=0,numOfToday=0,numOfThisM=0;
 // lay danh sach hoa don
 function loadListInvoice(result){
 	result.forEach(loadInvoice);
 	$('#all-invoice').html(numOfAll);
-	$('#thisY').html(numOfThisY);
 	$('#thisM').html(numOfThisM);
-	$('#thisW').html(numOfThisW);
 	$('#thisD').html(numOfToday);
 }
 function loadInvoice(invoice,i){
@@ -13,11 +11,11 @@ function loadInvoice(invoice,i){
 	numOfAll++;
 	var currentDate = new Date();
 	var date = new Date(parseFloat(invoice.date));
-	if(date.getFullYear()==currentDate.getFullYear()&&date.getMonth()==currentDate.getMonth()&&date.getDay()>=1&&Math.abs(date.getDate()-currentDate.getDate())<7){
-		addInvoiceToList(invoice,$('#list-invoice-w'));
-		numOfThisW++;
+	if(date.getFullYear()==currentDate.getFullYear()&&date.getMonth()==currentDate.getMonth()){
+		addInvoiceToList(invoice,$('#list-invoice-m'));
+		numOfThisM++;
 	}
-	if(date.getFullYear()==currentDate.getFullYear()&&date.getMonth()==currentDate.getMonth()&&date.getDay()==currentDate.getDay()){
+	if(date.getFullYear()==currentDate.getFullYear()&&date.getMonth()==currentDate.getMonth()&&date.getDate()==currentDate.getDate()){
 		addInvoiceToList(invoice,$('#list-invoice-d'));
 		numOfToday++;
 	}

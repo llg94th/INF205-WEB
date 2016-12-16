@@ -124,9 +124,9 @@
             <h4 class="list-group-item-heading">Hoá đơn bán hàng - Tất cả</h4>
           </li>
         </div>
-        <div id="list-invoice-w" class="list-group tab-pane flash" style="margin-top:10px;">
+        <div id="list-invoice-m" class="list-group tab-pane flash" style="margin-top:10px;">
           <li class="list-group-item active">
-            <h4 class="list-group-item-heading">Hoá đơn bán hàng - Tuần này</h4>
+            <h4 class="list-group-item-heading">Hoá đơn bán hàng - Tháng này</h4>
           </li>
         </div>
         <div id="list-invoice-d" class="list-group tab-pane flash" style="margin-top:10px;">
