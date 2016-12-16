@@ -25,6 +25,5 @@
 	
 	function generateId(){
 		$randNum = rand(0,9999);
-		return "KH".$randNum;
-	}
+        return "KH".$randNum;}
 ?>
